@@ -15,3 +15,10 @@ export const getNewsByCategory = async (category: number) => {
 
   return newsNormalizer(response);
 };
+
+export const getNewsByWord = async (searchWord: string) => {
+  const apiRequest = await fetch(`${BASE_URL}/search/${searchWord}`);
+  const response = await apiRequest.json();
+
+  return newsNormalizer(response);
+};
