@@ -1,4 +1,5 @@
-import { NewsResponse } from "../Interfaces/news";
+import { NewsResponse } from "../interfaces/news";
+import { newsNormalizer } from "../utils/news";
 
 const BASE_URL = process.env.REACT_APP_API_ENDPOINT;
 
@@ -20,4 +21,11 @@ export const getLatestNews = async (date: string) => {
     });
 
   return slicedResponse;
+};
+
+export const getNewsByCategory = async (category: number) => {
+  const apiRequest = await fetch(`${BASE_URL}/news/category/${category}`);
+  const response = await apiRequest.json();
+
+  console.log(newsNormalizer(response));
 };
