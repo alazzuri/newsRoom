@@ -1,3 +1,4 @@
+//TYPESCRIPT
 import { NewsResponse } from "../interfaces/news";
 
 export const newsNormalizer = (NewsArray: Array<NewsResponse>) =>
