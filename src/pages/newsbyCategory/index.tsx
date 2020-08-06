@@ -1,7 +1,13 @@
+//REACT
 import React from "react";
 
+//ROUTER
+import { useParams } from "react-router-dom";
+
 const NewsByCategory = () => {
-  return <div>Category</div>;
+  const { name } = useParams();
+
+  return <div>{name}</div>;
 };
 
 export default NewsByCategory;
