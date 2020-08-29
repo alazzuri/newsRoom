@@ -1,0 +1,4 @@
+export const SET_NEWS_DATA = "SET_NEWS_DATA";
+export const SET_INPUT_TEXT = "SET_INPUT_TEXT";
+export const TOGGLE_LOADING = "TOGGLE_LOADING";
+export const SET_CATEGORY = "SET_CATEGORY";
