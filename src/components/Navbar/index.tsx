@@ -12,17 +12,44 @@ import InputBase from "@material-ui/core/InputBase";
 //STYLES
 import { useStyles } from "./styles";
 
+//ROUTES
+import { Link } from "react-router-dom";
+
+//UTILS
+import { newsCategories } from "../../utils/constants";
+
+//TYPESCRIPT
+interface NavRoute {
+  name: string;
+  path: string;
+}
+
 const Navbar = () => {
   const styles = useStyles();
 
+  const renderNavRoutes = (routes: Array<NavRoute>) => (
+    <>
+      <Link to="/">
+        <Button color="inherit" classes={{ root: styles.button }}>
+          Home
+        </Button>
+      </Link>
+      {routes.map((category) => (
+        <Link to={`/category/${category.path}`}>
+          <Button color="inherit" classes={{ root: styles.button }}>
+            {category.name}
+          </Button>
+        </Link>
+      ))}
+    </>
+  );
+
   return (
     <AppBar position="relative" classes={{ root: styles.root }}>
-      <Grid md={6} xs={1} classes={{ root: styles.desktopNavbar }}>
-        <Button color="inherit" classes={{ root: styles.button }}>
-          Login
-        </Button>
+      <Grid md={7} xs={1} classes={{ root: styles.desktopNavbar }}>
+        {renderNavRoutes(newsCategories)}
       </Grid>
-      <Grid md={4} classes={{ root: styles.searchContainer }}>
+      <Grid md={3} classes={{ root: styles.searchContainer }}>
         <div className={styles.search}>
           <InputBase
             placeholder="Search…"
