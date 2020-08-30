@@ -22,7 +22,7 @@ const Header = () => {
   const currentDate = useSelector((state: Store) => state.date);
 
   return (
-    <AppBar color="secondary" classes={{ root: styles.root }}>
+    <AppBar position="relative" classes={{ root: styles.root }}>
       <Grid container>
         <Grid xs={12} md={6} item classes={{ root: styles.logoContainer }}>
           <Avatar
