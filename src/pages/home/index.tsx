@@ -2,20 +2,13 @@ import React, { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { fetchNews } from "../../actions";
 import { HOME_FEED } from "../../utils/constants";
+import NewsCard from "../../components/NewsCards";
 import {
-  Card,
-  Grid,
-  CardContent,
-  Typography,
-  Button,
-  CardActionArea,
-  GridList,
-  GridListTile,
-  ListSubheader,
-  GridListTileBar,
-  IconButton,
-} from "@material-ui/core";
-import CardMedia from "@material-ui/core/CardMedia";
+  BigCardContainer,
+  VerticalCardsContainer,
+  NewsContainer,
+  HorizontalCardsContainer,
+} from "./styles";
 
 const news = {
   id: 1722425,
@@ -26,23 +19,41 @@ const news = {
     "https://www.ole.com.ar/fuera-de-juego/manu-gonobili-tim-duncan-biciclate-30-kilometros_0_oVb5zM8xp.html",
 };
 
-const NewsCard = () => (
-  <Card>
-    <CardActionArea>
-      <CardMedia src={news.imgUrl} title="nanan" component="img" />
-      <CardContent>
-        <Typography gutterBottom variant="h5" component="h2">
-          {news.title}
-        </Typography>
-        <Typography variant="body2" color="textSecondary" component="p">
-          {news.sourceName}
-        </Typography>
-        <Button size="small" color="primary" href={news.url} target="_blank">
-          Learn More
-        </Button>
-      </CardContent>
-    </CardActionArea>
-  </Card>
+const TopSection = () => (
+  <>
+    <BigCardContainer item sm={12} lg={4}>
+      <NewsCard
+        id={news.id}
+        title={news.title}
+        sourceName={news.sourceName}
+        imgUrl={news.imgUrl}
+        url={news.url}
+      />
+    </BigCardContainer>
+    <VerticalCardsContainer item sm={12} lg={8}>
+      <NewsCard
+        id={news.id}
+        title={news.title}
+        sourceName={news.sourceName}
+        imgUrl={news.imgUrl}
+        url={news.url}
+      />
+      <NewsCard
+        id={news.id}
+        title={news.title}
+        sourceName={news.sourceName}
+        imgUrl={news.imgUrl}
+        url={news.url}
+      />
+      <NewsCard
+        id={news.id}
+        title={news.title}
+        sourceName={news.sourceName}
+        imgUrl={news.imgUrl}
+        url={news.url}
+      />
+    </VerticalCardsContainer>
+  </>
 );
 
 const Home = () => {
@@ -50,142 +61,61 @@ const Home = () => {
   const dispatch = useDispatch();
 
   return (
-    <Grid container spacing={1}>
-      <Grid item lg={6} xs={12}>
-        <GridListTile key={news.id} rows={2} cols={6}>
-          <img src={news.imgUrl} alt={news.title} />
-          <GridListTileBar
-            title={news.title}
-            subtitle={<span>by: {news.sourceName}</span>}
-            actionIcon={
-              <IconButton aria-label={`info about ${news.title}`}>
-                See more
-              </IconButton>
-            }
-          />
-        </GridListTile>
-      </Grid>
-      <Grid item lg={6} xs={12}>
-        <GridList cols={6}>
-          <GridListTile key={news.id} rows={1} cols={3}>
-            <img src={news.imgUrl} alt={news.title} />
-            <GridListTileBar
-              title={news.title}
-              subtitle={<span>by: {news.sourceName}</span>}
-              actionIcon={
-                <IconButton aria-label={`info about ${news.title}`}>
-                  See more
-                </IconButton>
-              }
-            />
-          </GridListTile>
-          <GridListTile key={news.id} rows={1} cols={3}>
-            <img src={news.imgUrl} alt={news.title} />
-            <GridListTileBar
-              title={news.title}
-              subtitle={<span>by: {news.sourceName}</span>}
-              actionIcon={
-                <IconButton aria-label={`info about ${news.title}`}>
-                  See more
-                </IconButton>
-              }
-            />
-          </GridListTile>
-          <GridListTile key={news.id} rows={1.5} cols={6}>
-            <img src={news.imgUrl} alt={news.title} />
-            <GridListTileBar
-              title={news.title}
-              subtitle={<span>by: {news.sourceName}</span>}
-              actionIcon={
-                <IconButton aria-label={`info about ${news.title}`}>
-                  See more
-                </IconButton>
-              }
-            />
-          </GridListTile>
-          <GridListTile key={news.id} rows={1} cols={3}>
-            <img src={news.imgUrl} alt={news.title} />
-            <GridListTileBar
-              title={news.title}
-              subtitle={<span>by: {news.sourceName}</span>}
-              actionIcon={
-                <IconButton aria-label={`info about ${news.title}`}>
-                  See more
-                </IconButton>
-              }
-            />
-          </GridListTile>{" "}
-          <GridListTile key={news.id} rows={1} cols={3}>
-            <img src={news.imgUrl} alt={news.title} />
-            <GridListTileBar
-              title={news.title}
-              subtitle={<span>by: {news.sourceName}</span>}
-              actionIcon={
-                <IconButton aria-label={`info about ${news.title}`}>
-                  See more
-                </IconButton>
-              }
-            />
-          </GridListTile>
-        </GridList>
-      </Grid>
-      <Grid item lg={3} xs={12}>
-        <GridListTile key={news.id} rows={1} cols={3}>
-          <img src={news.imgUrl} alt={news.title} />
-          <GridListTileBar
-            title={news.title}
-            subtitle={<span>by: {news.sourceName}</span>}
-            actionIcon={
-              <IconButton aria-label={`info about ${news.title}`}>
-                See more
-              </IconButton>
-            }
-          />
-        </GridListTile>
-      </Grid>
-      <Grid item lg={3} xs={12}>
-        <GridListTile key={news.id} rows={1} cols={3}>
-          <img src={news.imgUrl} alt={news.title} />
-          <GridListTileBar
-            title={news.title}
-            subtitle={<span>by: {news.sourceName}</span>}
-            actionIcon={
-              <IconButton aria-label={`info about ${news.title}`}>
-                See more
-              </IconButton>
-            }
-          />
-        </GridListTile>
-      </Grid>{" "}
-      <Grid item lg={3} xs={12}>
-        <GridListTile key={news.id} rows={1} cols={3}>
-          <img src={news.imgUrl} alt={news.title} />
-          <GridListTileBar
-            title={news.title}
-            subtitle={<span>by: {news.sourceName}</span>}
-            actionIcon={
-              <IconButton aria-label={`info about ${news.title}`}>
-                See more
-              </IconButton>
-            }
-          />
-        </GridListTile>
-      </Grid>{" "}
-      <Grid item lg={3} xs={12}>
-        <GridListTile key={news.id} rows={1} cols={3}>
-          <img src={news.imgUrl} alt={news.title} />
-          <GridListTileBar
-            title={news.title}
-            subtitle={<span>by: {news.sourceName}</span>}
-            actionIcon={
-              <IconButton aria-label={`info about ${news.title}`}>
-                See more
-              </IconButton>
-            }
-          />
-        </GridListTile>
-      </Grid>
-    </Grid>
+    <NewsContainer container spacing={0}>
+      <TopSection />
+      <HorizontalCardsContainer item sm={6} lg={12}>
+        <NewsCard
+          id={news.id}
+          title={news.title}
+          sourceName={news.sourceName}
+          imgUrl={news.imgUrl}
+          url={news.url}
+          type="small"
+        />
+        <NewsCard
+          id={news.id}
+          title={news.title}
+          sourceName={news.sourceName}
+          imgUrl={news.imgUrl}
+          url={news.url}
+          type="small"
+        />
+        <NewsCard
+          id={news.id}
+          title={news.title}
+          sourceName={news.sourceName}
+          imgUrl={news.imgUrl}
+          url={news.url}
+          type="small"
+        />
+      </HorizontalCardsContainer>
+      <HorizontalCardsContainer item sm={6} lg={12}>
+        <NewsCard
+          id={news.id}
+          title={news.title}
+          sourceName={news.sourceName}
+          imgUrl={news.imgUrl}
+          url={news.url}
+          type="small"
+        />
+        <NewsCard
+          id={news.id}
+          title={news.title}
+          sourceName={news.sourceName}
+          imgUrl={news.imgUrl}
+          url={news.url}
+          type="small"
+        />
+        <NewsCard
+          id={news.id}
+          title={news.title}
+          sourceName={news.sourceName}
+          imgUrl={news.imgUrl}
+          url={news.url}
+          type="small"
+        />
+      </HorizontalCardsContainer>
+    </NewsContainer>
   );
 };
 
