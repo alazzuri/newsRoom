@@ -1,7 +1,7 @@
 import { styled } from "@material-ui/core/styles";
 import { Grid } from "@material-ui/core";
 
-export const NewsContainer = styled(Grid)(({ theme }) => ({
+export const Container = styled(Grid)(({ theme }) => ({
   height: "100%",
   width: "100%",
 
