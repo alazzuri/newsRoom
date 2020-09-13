@@ -1,5 +1,5 @@
 //TYPESCRIPT
-import { NewsResponse } from "../interfaces/news";
+import { News, NewsResponse } from "../interfaces/news";
 
 export const newsNormalizer = (NewsArray: Array<NewsResponse>) =>
   NewsArray.slice(0, 10).map(
@@ -31,4 +31,13 @@ export const categoryNumber = (category: string) => {
     default:
       return null;
   }
+};
+
+export const useNews = (news: News[]) => {
+  const [bigNews] = news.slice(0, 1);
+  const topNews = news.slice(1, 4);
+  const middleNews = news.slice(4, 7);
+  const smallNews = news.slice(7);
+
+  return { bigNews, topNews, middleNews, smallNews };
 };

@@ -16,12 +16,13 @@ import { useStyles } from "./styles";
 //TYPESCRIPT
 import { News } from "../../interfaces/news";
 
-interface Props extends News {
+type NewsProps = Omit<News, "id">;
+
+interface Props extends NewsProps {
   type?: string;
 }
 
 const NewsCard: React.FC<Props> = ({
-  id,
   title,
   imgUrl,
   sourceName,
