@@ -16,6 +16,8 @@ import { Store } from "../../store";
 
 //UTILS
 import Moment from "react-moment";
+import "moment/locale/es";
+Moment.globalLocale = "es";
 
 const Header = () => {
   const styles = useStyles();
@@ -35,7 +37,9 @@ const Header = () => {
         </Grid>
         <Grid xs={12} md={6} item classes={{ root: styles.dateContainer }}>
           <Typography variant="h6">
-            <Moment format="dddd LL">{currentDate}</Moment>
+            <Moment format="dddd LL" local>
+              {currentDate}
+            </Moment>
           </Typography>
         </Grid>
       </Grid>

@@ -64,13 +64,13 @@ const SmallCardsSection: React.FC<{ news: News[] }> = ({ news }) => {
 const NewsContainer: React.FC<{ news: News[] }> = ({ news }) => {
   const { bigNews, topNews, middleNews, smallNews } = useNews(news);
 
-  return (
+  return news.length ? (
     <Container container spacing={0}>
       <TopSection bigNews={bigNews} topNews={topNews} />
       <SmallCardsSection news={middleNews} />
       <SmallCardsSection news={smallNews} />
     </Container>
-  );
+  ) : null;
 };
 
 export default NewsContainer;

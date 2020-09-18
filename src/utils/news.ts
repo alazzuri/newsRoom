@@ -13,23 +13,23 @@ export const newsNormalizer = (NewsArray: Array<NewsResponse>) =>
       }
   );
 
-export const categoryNumber = (category: string) => {
+export const getCategoryNumber = (category: string) => {
   switch (category.toLowerCase()) {
-    case "política":
+    case "politics":
       return 1;
-    case "internacionales":
+    case "internationals":
       return 2;
-    case "tecnología":
+    case "technologies":
       return 3;
-    case "espectáculos":
+    case "shows":
       return 4;
-    case "deportes":
+    case "sports":
       return 5;
-    case "diseño":
+    case "design":
       return 6;
 
     default:
-      return null;
+      return 0;
   }
 };
 

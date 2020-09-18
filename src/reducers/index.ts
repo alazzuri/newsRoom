@@ -6,6 +6,9 @@ import {
   SET_CATEGORY,
 } from "../actions/types";
 
+//UTILS
+import moment from "moment";
+
 //TYPESCRIPT
 import { News } from "../interfaces/news";
 
@@ -13,7 +16,7 @@ const initialstate = {
   newsData: [],
   inputText: "",
   isLoading: false,
-  date: new Date().toISOString().substring(0, 10),
+  date: moment().format("YYYY-MM-DD"),
   category: 0,
 };
 

@@ -1,96 +1,26 @@
 import React, { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { fetchNews } from "../../actions";
-import { HOME_FEED } from "../../utils/constants";
-import NewsCard from "../../components/NewsCards";
+import { setNewsData } from "../../actions";
 import NewsContainer from "../../containers/NewsContainer";
-
-const news = [
-  {
-    id: 1722425,
-    imgUrl: "https://images.ole.com.ar/2020/08/30/85jaZmVsh_1200x630__1.jpg",
-    sourceName: "Olé",
-    title: "Manu Ginóbili: pedaleó 30 kilómetros con un invitado de lujo",
-    url:
-      "https://www.ole.com.ar/fuera-de-juego/manu-gonobili-tim-duncan-biciclate-30-kilometros_0_oVb5zM8xp.html",
-  },
-  {
-    id: 1722425,
-    imgUrl: "https://images.ole.com.ar/2020/08/30/85jaZmVsh_1200x630__1.jpg",
-    sourceName: "Olé",
-    title: "Manu Ginóbili: pedaleó 30 kilómetros con un invitado de lujo",
-    url:
-      "https://www.ole.com.ar/fuera-de-juego/manu-gonobili-tim-duncan-biciclate-30-kilometros_0_oVb5zM8xp.html",
-  },
-  {
-    id: 1722425,
-    imgUrl: "https://images.ole.com.ar/2020/08/30/85jaZmVsh_1200x630__1.jpg",
-    sourceName: "Olé",
-    title: "Manu Ginóbili: pedaleó 30 kilómetros con un invitado de lujo",
-    url:
-      "https://www.ole.com.ar/fuera-de-juego/manu-gonobili-tim-duncan-biciclate-30-kilometros_0_oVb5zM8xp.html",
-  },
-  {
-    id: 1722425,
-    imgUrl: "https://images.ole.com.ar/2020/08/30/85jaZmVsh_1200x630__1.jpg",
-    sourceName: "Olé",
-    title: "Manu Ginóbili: pedaleó 30 kilómetros con un invitado de lujo",
-    url:
-      "https://www.ole.com.ar/fuera-de-juego/manu-gonobili-tim-duncan-biciclate-30-kilometros_0_oVb5zM8xp.html",
-  },
-  {
-    id: 1722425,
-    imgUrl: "https://images.ole.com.ar/2020/08/30/85jaZmVsh_1200x630__1.jpg",
-    sourceName: "Olé",
-    title: "Manu Ginóbili: pedaleó 30 kilómetros con un invitado de lujo",
-    url:
-      "https://www.ole.com.ar/fuera-de-juego/manu-gonobili-tim-duncan-biciclate-30-kilometros_0_oVb5zM8xp.html",
-  },
-  {
-    id: 1722425,
-    imgUrl: "https://images.ole.com.ar/2020/08/30/85jaZmVsh_1200x630__1.jpg",
-    sourceName: "Olé",
-    title: "Manu Ginóbili: pedaleó 30 kilómetros con un invitado de lujo",
-    url:
-      "https://www.ole.com.ar/fuera-de-juego/manu-gonobili-tim-duncan-biciclate-30-kilometros_0_oVb5zM8xp.html",
-  },
-  {
-    id: 1722425,
-    imgUrl: "https://images.ole.com.ar/2020/08/30/85jaZmVsh_1200x630__1.jpg",
-    sourceName: "Olé",
-    title: "Manu Ginóbili: pedaleó 30 kilómetros con un invitado de lujo",
-    url:
-      "https://www.ole.com.ar/fuera-de-juego/manu-gonobili-tim-duncan-biciclate-30-kilometros_0_oVb5zM8xp.html",
-  },
-  {
-    id: 1722425,
-    imgUrl: "https://images.ole.com.ar/2020/08/30/85jaZmVsh_1200x630__1.jpg",
-    sourceName: "Olé",
-    title: "Manu Ginóbili: pedaleó 30 kilómetros con un invitado de lujo",
-    url:
-      "https://www.ole.com.ar/fuera-de-juego/manu-gonobili-tim-duncan-biciclate-30-kilometros_0_oVb5zM8xp.html",
-  },
-  {
-    id: 1722425,
-    imgUrl: "https://images.ole.com.ar/2020/08/30/85jaZmVsh_1200x630__1.jpg",
-    sourceName: "Olé",
-    title: "Manu Ginóbili: pedaleó 30 kilómetros con un invitado de lujo",
-    url:
-      "https://www.ole.com.ar/fuera-de-juego/manu-gonobili-tim-duncan-biciclate-30-kilometros_0_oVb5zM8xp.html",
-  },
-  {
-    id: 1722425,
-    imgUrl: "https://images.ole.com.ar/2020/08/30/85jaZmVsh_1200x630__1.jpg",
-    sourceName: "Olé",
-    title: "Manu Ginóbili: pedaleó 30 kilómetros con un invitado de lujo",
-    url:
-      "https://www.ole.com.ar/fuera-de-juego/manu-gonobili-tim-duncan-biciclate-30-kilometros_0_oVb5zM8xp.html",
-  },
-];
+import { Store } from "../../store";
+import { Action, ThunkAction } from "@reduxjs/toolkit";
+import { getLatestNews } from "../../provider/canillitaApp";
 
 const Home = () => {
-  const lala = useSelector((state) => state);
+  const news = useSelector((state: Store) => state.newsData);
+  const date = useSelector((state: Store) => state.date);
   const dispatch = useDispatch();
+
+  useEffect(() => {
+    const fetchNews = (): ThunkAction<void, Store, unknown, Action<string>> => {
+      return async (dispatch) => {
+        const response = await getLatestNews(date);
+        dispatch(setNewsData(response));
+      };
+    };
+
+    dispatch(fetchNews());
+  }, []);
 
   return <NewsContainer news={news} />;
 };

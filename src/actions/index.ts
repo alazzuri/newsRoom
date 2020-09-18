@@ -44,25 +44,3 @@ export const setCategory = (category: string) => ({
   type: SET_CATEGORY,
   value: category,
 });
-
-export const fetchNews = (
-  searchType: string
-): ThunkAction<void, Store, unknown, Action<string>> => {
-  return async (dispatch, getState) => {
-    if (searchType === HOME_FEED) {
-      const date = useSelector((state: Store) => state.date);
-      const response = await getLatestNews(date);
-      dispatch(setNewsData(response));
-    } else if (searchType === BY_CATEGORY) {
-      const category = useSelector((state: Store) => state.category);
-      const response = await getNewsByCategory(category);
-      dispatch(setNewsData(response));
-    } else if (searchType === BY_WORD) {
-      const searchInput = useSelector((state: Store) => state.inputText);
-      const response = await getNewsByWord(searchInput);
-      dispatch(setNewsData(response));
-    } else {
-      throw new Error("Bad request"); //Pedning to handle this
-    }
-  };
-};

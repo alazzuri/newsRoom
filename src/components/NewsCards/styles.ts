@@ -10,7 +10,10 @@ export const useStyles = makeStyles((theme: Theme) => ({
     width: "100%",
     height: "100%",
     borderRadius: 0,
-    backgroundImage: `url(${props.imgUrl})`,
+    backgroundImage: `url(${
+      props.imgUrl ||
+      "https://via.placeholder.com/300/363537/363537?Text=Nodisponible"
+    })`,
     backgroundSize: "cover",
     backgroundRepeat: "no-repeat",
     filter: "brightness(0.7)",
@@ -31,12 +34,12 @@ export const useStyles = makeStyles((theme: Theme) => ({
       height: "50vh",
     },
   }),
-  cardContent: {
+  cardContent: (props: Props) => ({
     width: "90%",
     color: "white",
     position: "absolute",
     bottom: 50,
-  },
+  }),
   buttonContainer: {
     position: "absolute",
     bottom: 20,
