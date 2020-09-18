@@ -55,6 +55,7 @@ const SmallCardsSection: React.FC<{ news: News[] }> = ({ news }) => {
           sourceName={oneNews.sourceName}
           imgUrl={oneNews.imgUrl}
           url={oneNews.url}
+          type="small"
         />
       ))}
     </HorizontalCardsContainer>
