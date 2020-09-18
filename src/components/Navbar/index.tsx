@@ -1,8 +1,13 @@
 //REACT
-import React from "react";
+import React, { ChangeEvent, SyntheticEvent } from "react";
 
 //COMPONENTS
 import MobileTabBar from "../TabBar";
+
+//REDUX
+import { useDispatch, useSelector } from "react-redux";
+import { Store } from "../../store";
+import { setSearchWord } from "../../actions";
 
 //MATERIAL UI
 import { AppBar, Button, Grid } from "@material-ui/core";
@@ -13,7 +18,7 @@ import InputBase from "@material-ui/core/InputBase";
 import { useStyles } from "./styles";
 
 //ROUTES
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 
 //UTILS
 import { newsCategories } from "../../utils/constants";
@@ -26,6 +31,9 @@ interface NavRoute {
 
 const Navbar = () => {
   const styles = useStyles();
+  const history = useHistory();
+  const searchWord = useSelector((state: Store) => state.searchWord);
+  const dispatch = useDispatch();
 
   const renderNavRoutes = (routes: Array<NavRoute>) => (
     <>
@@ -34,8 +42,11 @@ const Navbar = () => {
           Home
         </Button>
       </Link>
-      {routes.map((category) => (
-        <Link to={`/category/${category.path}`}>
+      {routes.map((category, index) => (
+        <Link
+          to={`/category/${category.path}`}
+          key={`${index}-${category.path}`}
+        >
           <Button color="inherit" classes={{ root: styles.button }}>
             {category.name}
           </Button>
@@ -44,25 +55,37 @@ const Navbar = () => {
     </>
   );
 
+  const onHandleSearch = (e: SyntheticEvent) => {
+    dispatch(setSearchWord(""));
+    history.push(`/search/${searchWord}`);
+    e.preventDefault();
+  };
+
+  const onInputChange = (e: ChangeEvent<HTMLInputElement>) => {
+    dispatch(setSearchWord(e.target.value));
+  };
+
   return (
     <AppBar position="relative" classes={{ root: styles.root }}>
       <Grid md={7} xs={1} classes={{ root: styles.desktopNavbar }}>
         {renderNavRoutes(newsCategories)}
       </Grid>
       <Grid md={3} classes={{ root: styles.searchContainer }}>
-        <div className={styles.search}>
+        <form className={styles.search} onSubmit={onHandleSearch}>
           <InputBase
-            placeholder="Search…"
+            placeholder="Buscar…"
             classes={{
               root: styles.inputRoot,
               input: styles.inputInput,
             }}
             inputProps={{ "aria-label": "search" }}
+            onChange={onInputChange}
+            value={searchWord}
           />
           <div className={styles.searchIcon}>
             <SearchIcon />
           </div>
-        </div>
+        </form>
       </Grid>
       <MobileTabBar />
     </AppBar>

@@ -6,13 +6,14 @@ import { store } from "./store";
 import Header from "./components/Header";
 import Navbar from "./components/Navbar";
 import { BrowserRouter as Router } from "react-router-dom";
+import Spinner from "./components/Spinner";
 
 function App() {
   return (
     <div>
       <Provider store={store}>
         <Router>
-          <Suspense fallback={<div>Loading...</div>}>
+          <Suspense fallback={<Spinner />}>
             <Header />
             <Navbar />
             <Routes />

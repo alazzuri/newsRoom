@@ -1,26 +1,10 @@
-//REDUX
-import { ThunkAction } from "redux-thunk";
-import { Store } from "../store";
-import { Action } from "redux";
-import { useSelector } from "react-redux";
-
 //ACTION TYPES
 import {
   TOGGLE_LOADING,
-  SET_INPUT_TEXT,
+  SET_SEARCH_WORD,
   SET_NEWS_DATA,
   SET_CATEGORY,
 } from "./types";
-
-//UITLS
-import { HOME_FEED, BY_CATEGORY, BY_WORD } from "../utils/constants";
-
-//API
-import {
-  getLatestNews,
-  getNewsByCategory,
-  getNewsByWord,
-} from "../provider/canillitaApp";
 
 //TYPESCRIPT
 import { News } from "../interfaces/news";
@@ -30,8 +14,8 @@ export const toggleLoading = (currentLoadingStatus: boolean) => ({
   value: !currentLoadingStatus,
 });
 
-export const setInputText = (text: string) => ({
-  type: SET_INPUT_TEXT,
+export const setSearchWord = (text: string) => ({
+  type: SET_SEARCH_WORD,
   value: text,
 });
 

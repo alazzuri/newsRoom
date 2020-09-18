@@ -1,7 +1,7 @@
 //ACTION TYPES
 import {
   TOGGLE_LOADING,
-  SET_INPUT_TEXT,
+  SET_SEARCH_WORD,
   SET_NEWS_DATA,
   SET_CATEGORY,
 } from "../actions/types";
@@ -14,7 +14,7 @@ import { News } from "../interfaces/news";
 
 const initialstate = {
   newsData: [],
-  inputText: "",
+  searchWord: "",
   isLoading: false,
   date: moment().format("YYYY-MM-DD"),
   category: 0,
@@ -23,7 +23,7 @@ const initialstate = {
 const rootReducer = (
   state: {
     newsData: News[] | never[];
-    inputText: string;
+    searchWord: string;
     isLoading: boolean;
     date: string;
     category: number;
@@ -36,8 +36,8 @@ const rootReducer = (
   switch (action.type) {
     case SET_NEWS_DATA:
       return { ...state, newsData: action.value };
-    case SET_INPUT_TEXT:
-      return { ...state, inputText: action.value };
+    case SET_SEARCH_WORD:
+      return { ...state, searchWord: action.value };
     case TOGGLE_LOADING:
       return { ...state, isLoading: action.value };
     case SET_CATEGORY:
