@@ -1,5 +1,5 @@
 //REACT
-import React from "react";
+import React, { Suspense, useState } from "react";
 
 //MATERIAL UI
 import {
@@ -16,11 +16,31 @@ import { useStyles } from "./styles";
 //TYPESCRIPT
 import { News } from "../../interfaces/news";
 
+//UTILS
+import { fallbackImg } from "../../utils/constants";
+
 type NewsProps = Omit<News, "id">;
 
 interface Props extends NewsProps {
   type?: string;
 }
+
+const CardImage: React.FC<{ url: string; styles: any }> = ({ url, styles }) => {
+  const [imgSrc, setImgSrc] = useState(url || fallbackImg);
+
+  return (
+    <Suspense fallback={<img src={fallbackImg} alt="fallback" />}>
+      <img
+        src={imgSrc}
+        alt="news"
+        className={styles}
+        onError={() => {
+          setImgSrc(fallbackImg);
+        }}
+      />
+    </Suspense>
+  );
+};
 
 const NewsCard: React.FC<Props> = ({
   title,
@@ -31,8 +51,20 @@ const NewsCard: React.FC<Props> = ({
 }) => {
   const styles = useStyles({ imgUrl, type });
 
+  const setImageStyles = (type?: string) => {
+    switch (type) {
+      case "big":
+        return styles.largeImage;
+      case "medium":
+        return styles.mediumImage;
+      default:
+        return styles.smallImage;
+    }
+  };
+
   return (
     <Card variant="outlined" classes={{ root: styles.root }}>
+      <CardImage url={imgUrl} styles={setImageStyles(type)} />
       <CardContent classes={{ root: styles.cardContent }}>
         <Typography
           variant="h4"

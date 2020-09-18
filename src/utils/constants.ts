@@ -12,3 +12,7 @@ export const newsCategories = [
   { name: "Deportes", path: "sports" },
   { name: "Diseño", path: "design" },
 ];
+
+//FALLBACK IMAGE
+export const fallbackImg =
+  "https://via.placeholder.com/300/363537/363537?Text=Nodisponible";

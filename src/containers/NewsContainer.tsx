@@ -29,6 +29,7 @@ const TopSection: React.FC<{ bigNews: News; topNews: News[] }> = ({
         sourceName={bigNews.sourceName}
         imgUrl={bigNews.imgUrl}
         url={bigNews.url}
+        type="big"
       />
     </BigCardContainer>
     <VerticalCardsContainer item sm={12} lg={8}>
@@ -39,6 +40,7 @@ const TopSection: React.FC<{ bigNews: News; topNews: News[] }> = ({
           sourceName={oneNews.sourceName}
           imgUrl={oneNews.imgUrl}
           url={oneNews.url}
+          type="medium"
         />
       ))}
     </VerticalCardsContainer>
