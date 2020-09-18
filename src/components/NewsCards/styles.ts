@@ -68,7 +68,7 @@ export const useStyles = makeStyles((theme: Theme) => ({
     width: "70%",
     fontWeight: "bold",
     fontSize: `${props.type === "small" && "1.5rem"}`,
-
+    textShadow: "2px 2px #000000",
     [theme.breakpoints.down("xs")]: {
       fontSize: "2rem",
     },
