@@ -1,5 +1,5 @@
 //TYPESCRIPT
-import { NewsResponse } from "../interfaces/news";
+import { News, NewsResponse } from "../interfaces/news";
 
 export const newsNormalizer = (NewsArray: Array<NewsResponse>) =>
   NewsArray.slice(0, 10).map(
@@ -13,22 +13,31 @@ export const newsNormalizer = (NewsArray: Array<NewsResponse>) =>
       }
   );
 
-export const categoryNumber = (category: string) => {
+export const getCategoryNumber = (category: string) => {
   switch (category.toLowerCase()) {
-    case "política":
+    case "politics":
       return 1;
-    case "internacionales":
+    case "internationals":
       return 2;
-    case "tecnología":
+    case "technologies":
       return 3;
-    case "espectáculos":
+    case "shows":
       return 4;
-    case "deportes":
+    case "sports":
       return 5;
-    case "diseño":
+    case "design":
       return 6;
 
     default:
-      return null;
+      return 0;
   }
+};
+
+export const useNews = (news: News[]) => {
+  const [bigNews] = news.slice(0, 1);
+  const topNews = news.slice(1, 4);
+  const middleNews = news.slice(4, 7);
+  const smallNews = news.slice(7);
+
+  return { bigNews, topNews, middleNews, smallNews };
 };
