@@ -9,6 +9,7 @@ import { getLatestNews } from "../../provider/canillitaApp";
 const Home = () => {
   const news = useSelector((state: Store) => state.newsData);
   const date = useSelector((state: Store) => state.date);
+  const isLoading = useSelector((state: Store) => state.isLoading);
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -22,7 +23,7 @@ const Home = () => {
     dispatch(fetchNews());
   }, []);
 
-  return <NewsContainer news={news} />;
+  return <NewsContainer news={news} loading={isLoading} />;
 };
 
 export default Home;

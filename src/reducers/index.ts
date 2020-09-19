@@ -39,7 +39,7 @@ const rootReducer = (
     case SET_SEARCH_WORD:
       return { ...state, searchWord: action.value };
     case TOGGLE_LOADING:
-      return { ...state, isLoading: action.value };
+      return { ...state, isLoading: !state.isLoading };
     case SET_CATEGORY:
       return { ...state, category: action.value };
     default:

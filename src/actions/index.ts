@@ -9,9 +9,8 @@ import {
 //TYPESCRIPT
 import { News } from "../interfaces/news";
 
-export const toggleLoading = (currentLoadingStatus: boolean) => ({
+export const toggleLoading = () => ({
   type: TOGGLE_LOADING,
-  value: !currentLoadingStatus,
 });
 
 export const setSearchWord = (text: string) => ({

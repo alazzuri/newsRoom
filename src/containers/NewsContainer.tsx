@@ -3,6 +3,7 @@ import React from "react";
 
 //COMPONENTS
 import NewsCard from "../components/NewsCards";
+import Spinner from "../components/Spinner";
 
 //STYLES
 import {
@@ -64,8 +65,13 @@ const SmallCardsSection: React.FC<{ news: News[] }> = ({ news }) => {
   );
 };
 
-const NewsContainer: React.FC<{ news: News[] }> = ({ news }) => {
+const NewsContainer: React.FC<{ news: News[]; loading: boolean }> = ({
+  news,
+  loading,
+}) => {
   const { bigNews, topNews, middleNews, smallNews } = useNews(news);
+
+  if (loading) return <Spinner />;
 
   return news.length ? (
     <Container container spacing={0}>
