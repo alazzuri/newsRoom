@@ -63,8 +63,19 @@ export const useStyles = makeStyles((theme: Theme) => ({
   title: (props: Props) => ({
     width: "70%",
     fontWeight: "bold",
-    fontSize: `${props.type === "small" && "1.5rem"}`,
+    fontSize: `${props.type === "small" ? "1.5rem" : "1.8rem"}`,
     textShadow: "2px 2px #000000",
+
+    [theme.breakpoints.down("md")]: {
+      fontSize: `${
+        (props.type === "medium" && "1.5rem") ||
+        (props.type === "small" && "1.8rem")
+      }`,
+    },
+    [theme.breakpoints.down("sm")]: {
+      fontSize: `${props.type === "small" ? "1.1rem" : "1.6rem"}`,
+    },
+
     [theme.breakpoints.down("xs")]: {
       fontSize: "2rem",
     },
@@ -74,15 +85,56 @@ export const useStyles = makeStyles((theme: Theme) => ({
     width: "100%",
     height: "100%",
     position: "absolute",
+
+    [theme.breakpoints.down("md")]: {
+      width: "150%",
+      minHeight: 410,
+    },
+    [theme.breakpoints.down("sm")]: {
+      width: "100%",
+      minHeight: 250,
+    },
+    [theme.breakpoints.down("xs")]: {
+      width: "150%",
+      minHeight: 410,
+    },
   },
 
   mediumImage: {
-    width: "370%",
+    width: "200%",
     position: "absolute",
+    minHeight: 600,
+
+    [theme.breakpoints.down("md")]: {
+      width: "150%",
+      minHeight: 410,
+    },
+    [theme.breakpoints.down("sm")]: {
+      width: "100%",
+      minHeight: 250,
+    },
+    [theme.breakpoints.down("xs")]: {
+      width: "150%",
+      minHeight: 410,
+    },
   },
 
   largeImage: {
-    width: "260%",
+    width: "150%",
     position: "absolute",
+    minHeight: 600,
+
+    [theme.breakpoints.down("md")]: {
+      width: "100%",
+      minHeight: 410,
+    },
+    [theme.breakpoints.down("sm")]: {
+      width: "100%",
+      minHeight: 250,
+    },
+    [theme.breakpoints.down("xs")]: {
+      width: "150%",
+      minHeight: 410,
+    },
   },
 }));
