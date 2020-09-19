@@ -18,6 +18,7 @@ import { News } from "../../interfaces/news";
 
 //UTILS
 import { fallbackImg } from "../../utils/constants";
+import { normalizeTitle } from "../../utils/news";
 
 type NewsProps = Omit<News, "id">;
 
@@ -71,7 +72,7 @@ const NewsCard: React.FC<Props> = ({
           component="h2"
           classes={{ root: styles.title }}
         >
-          {title}
+          {normalizeTitle(title)}
         </Typography>
         <Typography variant="body1" component="p">
           Fuente: {sourceName}

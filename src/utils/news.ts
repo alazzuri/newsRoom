@@ -41,3 +41,12 @@ export const useNews = (news: News[]) => {
 
   return { bigNews, topNews, middleNews, smallNews };
 };
+
+export const normalizeTitle = (title: string) => {
+  if (title.length > 100) {
+    const shortenedTitle = title.slice(0, 100);
+    return `${shortenedTitle}...`;
+  } else {
+    return title;
+  }
+};
