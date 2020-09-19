@@ -21,19 +21,26 @@ const NewsBySearchWord = () => {
   const isLoading = useSelector((state: Store) => state.isLoading);
 
   useEffect(() => {
+    const abortController = new AbortController();
+    const signal = abortController.signal;
+
     const fetchNews = (
       word: string
     ): ThunkAction<void, Store, unknown, Action<string>> => {
       dispatch(setNewsData([]));
       dispatch(toggleLoading());
       return async (dispatch) => {
-        const response = await getNewsByWord(word);
+        const response = await getNewsByWord(word, signal);
         dispatch(setNewsData(response));
         dispatch(toggleLoading());
       };
     };
 
     dispatch(fetchNews(word));
+
+    return () => {
+      abortController.abort();
+    };
   }, [word]);
 
   return <NewsContainer news={news} loading={isLoading} />;

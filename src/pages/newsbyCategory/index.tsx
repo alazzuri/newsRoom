@@ -25,6 +25,9 @@ const NewsByCategory = () => {
   const categoryId = getCategoryNumber(name);
 
   useEffect(() => {
+    const abortController = new AbortController();
+    const signal = abortController.signal;
+
     const fetchNews = (
       id: number
     ): ThunkAction<void, Store, unknown, Action<string>> => {
@@ -32,13 +35,17 @@ const NewsByCategory = () => {
       dispatch(toggleLoading());
 
       return async (dispatch) => {
-        const response = await getNewsByCategory(id);
+        const response = await getNewsByCategory(id, signal);
         dispatch(setNewsData(response));
         dispatch(toggleLoading());
       };
     };
 
     dispatch(fetchNews(categoryId));
+
+    return () => {
+      abortController.abort();
+    };
   }, [categoryId]);
 
   return <NewsContainer news={news} loading={isLoading} />;

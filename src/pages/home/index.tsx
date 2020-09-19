@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { setNewsData } from "../../actions";
+import { setNewsData, toggleLoading } from "../../actions";
 import NewsContainer from "../../containers/NewsContainer";
 import { Store } from "../../store";
 import { Action, ThunkAction } from "@reduxjs/toolkit";
@@ -13,14 +13,24 @@ const Home = () => {
   const dispatch = useDispatch();
 
   useEffect(() => {
+    const abortController = new AbortController();
+    const signal = abortController.signal;
+
     const fetchNews = (): ThunkAction<void, Store, unknown, Action<string>> => {
+      dispatch(setNewsData([]));
+      dispatch(toggleLoading());
       return async (dispatch) => {
-        const response = await getLatestNews(date);
+        const response = await getLatestNews(date, signal);
         dispatch(setNewsData(response));
+        dispatch(toggleLoading());
       };
     };
 
     dispatch(fetchNews());
+
+    return () => {
+      abortController.abort();
+    };
   }, []);
 
   return <NewsContainer news={news} loading={isLoading} />;
