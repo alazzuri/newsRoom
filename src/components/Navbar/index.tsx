@@ -10,7 +10,7 @@ import { Store } from "../../store";
 import { setSearchWord } from "../../actions";
 
 //MATERIAL UI
-import { AppBar, Button, Grid } from "@material-ui/core";
+import { AppBar, Button, Grid, Tooltip } from "@material-ui/core";
 import SearchIcon from "@material-ui/icons/Search";
 import InputBase from "@material-ui/core/InputBase";
 
@@ -56,9 +56,12 @@ const Navbar = () => {
   );
 
   const onHandleSearch = (e: SyntheticEvent) => {
-    dispatch(setSearchWord(""));
-    history.push(`/search/${searchWord}`);
     e.preventDefault();
+
+    if (searchWord.match(/[A-z0-9]{3,}/gm)) {
+      dispatch(setSearchWord(""));
+      history.push(`/search/${searchWord}`);
+    }
   };
 
   const onInputChange = (e: ChangeEvent<HTMLInputElement>) => {
@@ -71,21 +74,28 @@ const Navbar = () => {
         {renderNavRoutes(newsCategories)}
       </Grid>
       <Grid md={3} classes={{ root: styles.searchContainer }}>
-        <form className={styles.search} onSubmit={onHandleSearch}>
-          <InputBase
-            placeholder="Buscar…"
-            classes={{
-              root: styles.inputRoot,
-              input: styles.inputInput,
-            }}
-            inputProps={{ "aria-label": "search" }}
-            onChange={onInputChange}
-            value={searchWord}
-          />
-          <div className={styles.searchIcon}>
-            <SearchIcon />
-          </div>
-        </form>
+        <Tooltip
+          title="Ingresa al menos 3 caracteres"
+          disableHoverListener
+          placement="bottom-start"
+          classes={{ tooltip: styles.tooltip }}
+        >
+          <form className={styles.search} onSubmit={onHandleSearch}>
+            <InputBase
+              placeholder="Buscar…"
+              classes={{
+                root: styles.inputRoot,
+                input: styles.inputInput,
+              }}
+              inputProps={{ "aria-label": "search" }}
+              onChange={onInputChange}
+              value={searchWord}
+            />
+            <Button className={styles.searchIcon} onClick={onHandleSearch}>
+              <SearchIcon />
+            </Button>
+          </form>
+        </Tooltip>
       </Grid>
       <MobileTabBar />
     </AppBar>

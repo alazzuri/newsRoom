@@ -50,10 +50,12 @@ export const useStyles = makeStyles((theme) => ({
   searchIcon: {
     padding: theme.spacing(0, 2),
     height: "100%",
-    pointerEvents: "none",
     display: "flex",
     alignItems: "center",
     justifyContent: "center",
+    backgroundColor: "transparent",
+    border: "none",
+    color: "white",
 
     [theme.breakpoints.down("sm")]: {
       padding: theme.spacing(0, 2),
@@ -82,5 +84,9 @@ export const useStyles = makeStyles((theme) => ({
     [theme.breakpoints.down("md")]: {
       display: "none",
     },
+  },
+
+  tooltip: {
+    fontSize: "1rem",
   },
 }));
