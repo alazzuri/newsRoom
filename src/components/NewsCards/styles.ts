@@ -47,16 +47,18 @@ export const useStyles = makeStyles((theme: Theme) => ({
     "&:hover": {
       filter: "brightness(0.9)",
       backgroundColor: "#FE6B8B",
-      borderColor: "#0062cc",
+      borderColor: "none",
       boxShadow: "none",
     },
     "&:active": {
       boxShadow: "none",
-      backgroundColor: "#0062cc",
-      borderColor: "#005cbf",
+      filter: "brightness(0.8)",
+      backgroundColor: "#FE6B8B",
+      borderColor: "none",
+      outline: "none",
     },
     "&:focus": {
-      boxShadow: "0 0 0 0.2rem rgba(0,123,255,.5)",
+      boxShadow: "0 0 0 0.2rem rgba(254, 107, 139, 0.5)",
     },
   },
 

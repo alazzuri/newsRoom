@@ -83,6 +83,7 @@ const NewsCard: React.FC<Props> = ({
           size="medium"
           variant="contained"
           href={url}
+          target="_blank"
           classes={{ root: styles.button }}
           disableRipple
         >
