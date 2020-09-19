@@ -50,4 +50,15 @@ export const StyledSkeleton = styled(Skeleton)(({ theme }) => ({
   height: "100%",
   width: "100%",
   border: "1px solid rgb(123,123,124)",
+
+  [theme.breakpoints.down("md")]: {
+    height: "50vh",
+  },
+  [theme.breakpoints.down("sm")]: {
+    height: "30vh",
+  },
+  [theme.breakpoints.down("xs")]: {
+    width: "100%",
+    height: "50vh",
+  },
 }));

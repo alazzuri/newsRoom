@@ -10,8 +10,6 @@ export const useStyles = makeStyles((theme: Theme) => ({
     width: "100%",
     height: "100%",
     borderRadius: 0,
-    backgroundSize: "cover",
-    backgroundRepeat: "no-repeat",
     filter: "brightness(0.7)",
 
     "&:hover": {
