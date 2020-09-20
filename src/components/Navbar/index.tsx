@@ -1,5 +1,5 @@
 //REACT
-import React, { ChangeEvent, SyntheticEvent } from "react";
+import React, { useState, ChangeEvent, SyntheticEvent } from "react";
 
 //COMPONENTS
 import MobileTabBar from "../TabBar";
@@ -33,6 +33,7 @@ const Navbar = () => {
   const styles = useStyles();
   const history = useHistory();
   const searchWord = useSelector((state: Store) => state.searchWord);
+  const [showTooltip, setShowTooltip] = useState(false);
   const dispatch = useDispatch();
 
   const renderNavRoutes = (routes: Array<NavRoute>) => (
@@ -57,6 +58,7 @@ const Navbar = () => {
 
     if (searchWord.match(/[A-z0-9]{3,}/gm)) {
       dispatch(setSearchWord(""));
+      setShowTooltip(false);
 
       history.push(`/search/${searchWord}`);
     }
@@ -77,8 +79,14 @@ const Navbar = () => {
           disableHoverListener
           placement="bottom-start"
           classes={{ tooltip: styles.tooltip }}
+          open={showTooltip}
         >
-          <form className={styles.search} onSubmit={onHandleSearch}>
+          <form
+            className={styles.search}
+            onSubmit={onHandleSearch}
+            onFocus={() => setShowTooltip(true)}
+            onBlur={() => setShowTooltip(false)}
+          >
             <InputBase
               placeholder="Buscar…"
               classes={{
