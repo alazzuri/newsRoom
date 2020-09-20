@@ -16,6 +16,11 @@ export const useStyles = makeStyles((theme) => ({
     [theme.breakpoints.up("md")]: {
       justifyContent: "flex-start",
     },
+
+    [theme.breakpoints.down("sm")]: {
+      display: "flex",
+      flexDirection: "column",
+    },
   },
 
   logoImg: {
@@ -27,5 +32,9 @@ export const useStyles = makeStyles((theme) => ({
     display: "flex",
     justifyContent: "center",
     alignItems: "center",
+
+    [theme.breakpoints.down("sm")]: {
+      textAlign: "center",
+    },
   },
 }));

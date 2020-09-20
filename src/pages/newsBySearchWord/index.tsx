@@ -11,7 +11,7 @@ import { setNewsData, toggleLoading } from "../../actions";
 import { useParams } from "react-router-dom";
 
 //UTILS
-import { getNewsByWord } from "../../provider/canillitaApp";
+import { getNewsByWord } from "../../api_provider/canillitaApp";
 import NewsContainer from "../../containers/NewsContainer";
 
 const NewsBySearchWord = () => {

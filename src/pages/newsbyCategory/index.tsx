@@ -14,7 +14,7 @@ import { Store } from "../../store";
 import { useParams } from "react-router-dom";
 
 //UTILS
-import { getNewsByCategory } from "../../provider/canillitaApp";
+import { getNewsByCategory } from "../../api_provider/canillitaApp";
 import { getCategoryNumber } from "../../utils/news";
 
 const NewsByCategory = () => {
