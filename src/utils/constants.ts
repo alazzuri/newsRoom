@@ -1,6 +1,9 @@
 //APP TITLE
 export const APP_TITLE = "News Room";
 
+//API URL
+export const BASE_URL = " https://api.canillitapp.com";
+
 // SEARCH TYPES
 export const HOME_FEED = "HOME_FEED";
 export const BY_CATEGORY = "BY_CATEGORY";

@@ -1,7 +1,6 @@
 //UTILS
+import { BASE_URL } from "../utils/constants";
 import { newsNormalizer } from "../utils/news";
-
-const BASE_URL = process.env.REACT_APP_API_ENDPOINT;
 
 export const getLatestNews = async (date: string, signal: AbortSignal) => {
   try {
