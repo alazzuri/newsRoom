@@ -1,6 +1,10 @@
+//REACT
 import React from "react";
 
+//COMPONENTS
 import { PacmanLoader } from "react-spinners";
+
+//STYLES
 import { useStyles } from "./styles";
 
 const Spinner = () => {

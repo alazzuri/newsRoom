@@ -7,18 +7,22 @@ export const useStyles = makeStyles((theme) => ({
     padding: "1.2rem",
     boxShadow: "0 3px 5px 2px rgba(255, 105, 135, .3)",
   },
+
   logoContainer: {
     display: "flex;",
     alignItems: "center",
     justifyContent: "center",
+
     [theme.breakpoints.up("md")]: {
       justifyContent: "flex-start",
     },
   },
+
   logoImg: {
     padding: "1.5rem",
     fill: "white",
   },
+
   dateContainer: {
     display: "flex",
     justifyContent: "center",

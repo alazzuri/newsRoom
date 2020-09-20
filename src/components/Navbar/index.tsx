@@ -10,9 +10,8 @@ import { Store } from "../../store";
 import { setSearchWord } from "../../actions";
 
 //MATERIAL UI
-import { AppBar, Button, Grid, Tooltip } from "@material-ui/core";
+import { AppBar, Button, Grid, Tooltip, InputBase } from "@material-ui/core";
 import SearchIcon from "@material-ui/icons/Search";
-import InputBase from "@material-ui/core/InputBase";
 
 //STYLES
 import { useStyles } from "./styles";
@@ -22,6 +21,7 @@ import { Link, useHistory } from "react-router-dom";
 
 //UTILS
 import { newsCategories } from "../../utils/constants";
+import { keyGenerator } from "../../utils/keyGenerator";
 
 //TYPESCRIPT
 interface NavRoute {
@@ -43,10 +43,7 @@ const Navbar = () => {
         </Button>
       </Link>
       {routes.map((category, index) => (
-        <Link
-          to={`/category/${category.path}`}
-          key={`${index}-${category.path}`}
-        >
+        <Link to={`/category/${category.path}`} key={keyGenerator()}>
           <Button color="inherit" classes={{ root: styles.button }}>
             {category.name}
           </Button>
@@ -60,6 +57,7 @@ const Navbar = () => {
 
     if (searchWord.match(/[A-z0-9]{3,}/gm)) {
       dispatch(setSearchWord(""));
+
       history.push(`/search/${searchWord}`);
     }
   };

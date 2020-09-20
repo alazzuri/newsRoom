@@ -1,3 +1,6 @@
+//APP TITLE
+export const APP_TITLE = "News Room";
+
 // SEARCH TYPES
 export const HOME_FEED = "HOME_FEED";
 export const BY_CATEGORY = "BY_CATEGORY";

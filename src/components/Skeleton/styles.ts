@@ -29,6 +29,7 @@ export const VerticalCardsContainer = styled(Grid)(({ theme }) => ({
   [theme.breakpoints.down("md")]: {
     height: "auto",
   },
+
   [theme.breakpoints.down("sm")]: {
     flexDirection: "column",
   },
@@ -54,9 +55,11 @@ export const StyledSkeleton = styled(Skeleton)(({ theme }) => ({
   [theme.breakpoints.down("md")]: {
     height: "50vh",
   },
+
   [theme.breakpoints.down("sm")]: {
     height: "30vh",
   },
+
   [theme.breakpoints.down("xs")]: {
     width: "100%",
     height: "50vh",

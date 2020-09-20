@@ -2,10 +2,7 @@
 import React from "react";
 
 //MATERIAL UI
-import AppBar from "@material-ui/core/AppBar";
-import Grid from "@material-ui/core/Grid";
-import Avatar from "@material-ui/core/Avatar";
-import Typography from "@material-ui/core/Typography";
+import { AppBar, Grid, Avatar, Typography } from "@material-ui/core";
 
 //STYLES
 import { useStyles } from "./styles";
@@ -15,6 +12,7 @@ import { useSelector } from "react-redux";
 import { Store } from "../../store";
 
 //UTILS
+import { APP_TITLE } from "../../utils/constants";
 import Moment from "react-moment";
 import "moment/locale/es";
 Moment.globalLocale = "es";
@@ -30,9 +28,10 @@ const Header = () => {
           <Avatar
             src="/assets/icons/newspaper.svg"
             classes={{ root: styles.logoImg }}
+            alt="avatar"
           />
           <Typography variant="h3" component="h1">
-            News Room
+            {APP_TITLE}
           </Typography>
         </Grid>
         <Grid xs={12} md={6} item classes={{ root: styles.dateContainer }}>

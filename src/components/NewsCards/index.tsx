@@ -13,12 +13,12 @@ import {
 //STYLES
 import { useStyles } from "./styles";
 
-//TYPESCRIPT
-import { News } from "../../interfaces/news";
-
 //UTILS
 import { fallbackImg } from "../../utils/constants";
 import { normalizeTitle } from "../../utils/news";
+
+//TYPESCRIPT
+import { News } from "../../interfaces/news";
 
 type NewsProps = Omit<News, "id">;
 

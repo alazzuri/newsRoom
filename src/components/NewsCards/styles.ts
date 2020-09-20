@@ -6,7 +6,7 @@ interface Props {
 }
 
 export const useStyles = makeStyles((theme: Theme) => ({
-  root: (props: Props) => ({
+  root: () => ({
     width: "100%",
     height: "100%",
     borderRadius: 0,
@@ -20,34 +20,41 @@ export const useStyles = makeStyles((theme: Theme) => ({
     [theme.breakpoints.down("md")]: {
       height: "50vh",
     },
+
     [theme.breakpoints.down("sm")]: {
       height: "30vh",
     },
+
     [theme.breakpoints.down("xs")]: {
       width: "100%",
       height: "50vh",
     },
   }),
-  cardContent: (props: Props) => ({
+
+  cardContent: () => ({
     width: "90%",
     color: "white",
     position: "absolute",
     bottom: 50,
   }),
+
   buttonContainer: {
     position: "absolute",
     bottom: 20,
     right: 50,
   },
+
   button: {
     color: "white",
     backgroundColor: "#FE6B8B",
+
     "&:hover": {
       filter: "brightness(0.9)",
       backgroundColor: "#FE6B8B",
       borderColor: "none",
       boxShadow: "none",
     },
+
     "&:active": {
       boxShadow: "none",
       filter: "brightness(0.8)",
@@ -55,6 +62,7 @@ export const useStyles = makeStyles((theme: Theme) => ({
       borderColor: "none",
       outline: "none",
     },
+
     "&:focus": {
       boxShadow: "0 0 0 0.2rem rgba(254, 107, 139, 0.5)",
     },
@@ -72,6 +80,7 @@ export const useStyles = makeStyles((theme: Theme) => ({
         (props.type === "small" && "1.8rem")
       }`,
     },
+
     [theme.breakpoints.down("sm")]: {
       fontSize: `${props.type === "small" ? "1.1rem" : "1.6rem"}`,
     },
@@ -90,10 +99,12 @@ export const useStyles = makeStyles((theme: Theme) => ({
       width: "150%",
       minHeight: 410,
     },
+
     [theme.breakpoints.down("sm")]: {
       width: "100%",
       minHeight: 250,
     },
+
     [theme.breakpoints.down("xs")]: {
       width: "150%",
       minHeight: 410,
@@ -109,10 +120,12 @@ export const useStyles = makeStyles((theme: Theme) => ({
       width: "150%",
       minHeight: 410,
     },
+
     [theme.breakpoints.down("sm")]: {
       width: "100%",
       minHeight: 250,
     },
+
     [theme.breakpoints.down("xs")]: {
       width: "150%",
       minHeight: 410,
@@ -128,10 +141,12 @@ export const useStyles = makeStyles((theme: Theme) => ({
       width: "100%",
       minHeight: 410,
     },
+
     [theme.breakpoints.down("sm")]: {
       width: "100%",
       minHeight: 250,
     },
+
     [theme.breakpoints.down("xs")]: {
       width: "150%",
       minHeight: 410,

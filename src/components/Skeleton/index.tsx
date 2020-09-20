@@ -13,19 +13,22 @@ import {
   StyledSkeleton,
 } from "./styles";
 
+//UTILS
+import { keyGenerator } from "../../utils/keyGenerator";
+
 const TopSection: React.FC<{ large?: number; medium?: number }> = ({
   large = 1,
   medium = 3,
 }) => (
   <>
     {Array.from(new Array(large), () => (
-      <BigCardContainer item sm={12} lg={4}>
+      <BigCardContainer item sm={12} lg={4} key={keyGenerator()}>
         <StyledSkeleton variant="rect" animation="wave" />
       </BigCardContainer>
     ))}
     <VerticalCardsContainer item sm={12} lg={8}>
       {Array.from(new Array(medium), () => (
-        <StyledSkeleton variant="rect" animation="wave" />
+        <StyledSkeleton variant="rect" animation="wave" key={keyGenerator()} />
       ))}
     </VerticalCardsContainer>
     <Skeleton variant="rect" width="100%" height="100%" />
@@ -36,7 +39,7 @@ const SmallCardsSection: React.FC<{ items?: number }> = ({ items = 3 }) => {
   return (
     <HorizontalCardsContainer item sm={6} lg={12}>
       {Array.from(new Array(items), () => (
-        <StyledSkeleton variant="rect" animation="wave" />
+        <StyledSkeleton variant="rect" animation="wave" key={keyGenerator()} />
       ))}
     </HorizontalCardsContainer>
   );

@@ -8,12 +8,15 @@ export const useStyles = makeStyles((theme) => ({
     bottom: 0,
     left: 0,
     display: "none",
+
     [theme.breakpoints.down("md")]: {
       display: "block",
     },
   },
+
   tabBar: {
     background: "#363537",
   },
+
   indicator: { backgroundColor: "#FE6B8B" },
 }));
