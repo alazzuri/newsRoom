@@ -68,10 +68,10 @@ const Navbar = () => {
 
   return (
     <AppBar position="relative" classes={{ root: styles.root }}>
-      <Grid md={7} xs={1} classes={{ root: styles.desktopNavbar }}>
+      <Grid item md={7} xs={1} classes={{ root: styles.desktopNavbar }}>
         {renderNavRoutes(newsCategories)}
       </Grid>
-      <Grid md={3} classes={{ root: styles.searchContainer }}>
+      <Grid item md={3} classes={{ root: styles.searchContainer }}>
         <Tooltip
           title="Ingresa al menos 3 caracteres"
           disableHoverListener

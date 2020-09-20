@@ -1,14 +1,23 @@
+//REACT
 import React, { Suspense } from "react";
-import "./App.css";
-import { Provider } from "react-redux";
-import Routes from "./routes";
-import { store } from "./store";
+
+//COMPONENTS
 import Header from "./components/Header";
 import Navbar from "./components/Navbar";
-import { BrowserRouter as Router } from "react-router-dom";
 import Spinner from "./components/Spinner";
 
-function App() {
+//STYLES
+import "./App.css";
+
+//REDUX
+import { Provider } from "react-redux";
+import { store } from "./store";
+
+//ROUTER
+import Routes from "./routes";
+import { BrowserRouter as Router } from "react-router-dom";
+
+const App: React.FC = () => {
   return (
     <div>
       <Provider store={store}>
@@ -22,6 +31,6 @@ function App() {
       </Provider>
     </div>
   );
-}
+};
 
 export default App;

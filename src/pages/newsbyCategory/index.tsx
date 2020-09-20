@@ -18,11 +18,11 @@ import { getNewsByCategory } from "../../provider/canillitaApp";
 import { getCategoryNumber } from "../../utils/news";
 
 const NewsByCategory = () => {
-  const dispatch = useDispatch();
   const { name } = useParams<{ name: string }>();
   const news = useSelector((state: Store) => state.newsData);
   const isLoading = useSelector((state: Store) => state.isLoading);
   const categoryId = getCategoryNumber(name);
+  const dispatch = useDispatch();
 
   useEffect(() => {
     const abortController = new AbortController();
@@ -36,6 +36,7 @@ const NewsByCategory = () => {
 
       return async (dispatch) => {
         const response = await getNewsByCategory(id, signal);
+
         dispatch(setNewsData(response));
         dispatch(toggleLoading());
       };

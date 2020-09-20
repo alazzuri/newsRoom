@@ -71,15 +71,15 @@ const NewsContainer: React.FC<{ news: News[]; loading: boolean }> = ({
 }) => {
   const { bigNews, topNews, middleNews, smallNews } = useNews(news);
 
-  if (loading) return <SkeletonContainer />;
+  if (loading || !news.length) return <SkeletonContainer />;
 
-  return news.length ? (
+  return (
     <Container container spacing={0}>
       <TopSection bigNews={bigNews} topNews={topNews} />
       <SmallCardsSection news={middleNews} />
       <SmallCardsSection news={smallNews} />
     </Container>
-  ) : null;
+  );
 };
 
 export default NewsContainer;

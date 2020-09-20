@@ -9,7 +9,7 @@ const Home = lazy(() => import("../pages/home"));
 const NewsByCategory = lazy(() => import("../pages/newsbyCategory"));
 const NewsBySearchWord = lazy(() => import("../pages/newsBySearchWord"));
 
-const Routes = () => {
+const Routes: React.FC = () => {
   return (
     <Switch>
       <Route exact path="/">

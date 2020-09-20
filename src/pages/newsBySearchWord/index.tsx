@@ -15,10 +15,10 @@ import { getNewsByWord } from "../../provider/canillitaApp";
 import NewsContainer from "../../containers/NewsContainer";
 
 const NewsBySearchWord = () => {
-  const dispatch = useDispatch();
   const { word } = useParams<{ word: string }>();
   const news = useSelector((state: Store) => state.newsData);
   const isLoading = useSelector((state: Store) => state.isLoading);
+  const dispatch = useDispatch();
 
   useEffect(() => {
     const abortController = new AbortController();
@@ -29,8 +29,10 @@ const NewsBySearchWord = () => {
     ): ThunkAction<void, Store, unknown, Action<string>> => {
       dispatch(setNewsData([]));
       dispatch(toggleLoading());
+
       return async (dispatch) => {
         const response = await getNewsByWord(word, signal);
+
         dispatch(setNewsData(response));
         dispatch(toggleLoading());
       };

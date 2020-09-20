@@ -1,9 +1,16 @@
+//REACT
 import React, { useEffect } from "react";
+
+//COMPONENTS
+import NewsContainer from "../../containers/NewsContainer";
+
+//REDUX
 import { useSelector, useDispatch } from "react-redux";
 import { setNewsData, toggleLoading } from "../../actions";
-import NewsContainer from "../../containers/NewsContainer";
 import { Store } from "../../store";
 import { Action, ThunkAction } from "@reduxjs/toolkit";
+
+//UTILS
 import { getLatestNews } from "../../provider/canillitaApp";
 
 const Home = () => {
@@ -19,8 +26,10 @@ const Home = () => {
     const fetchNews = (): ThunkAction<void, Store, unknown, Action<string>> => {
       dispatch(setNewsData([]));
       dispatch(toggleLoading());
+
       return async (dispatch) => {
         const response = await getLatestNews(date, signal);
+
         dispatch(setNewsData(response));
         dispatch(toggleLoading());
       };

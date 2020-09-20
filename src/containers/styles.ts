@@ -28,6 +28,7 @@ export const VerticalCardsContainer = styled(Grid)(({ theme }) => ({
   [theme.breakpoints.down("md")]: {
     height: "auto",
   },
+
   [theme.breakpoints.down("sm")]: {
     flexDirection: "column",
   },
