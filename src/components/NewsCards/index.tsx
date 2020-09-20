@@ -18,7 +18,7 @@ import { fallbackImg } from "../../utils/constants";
 import { normalizeTitle } from "../../utils/news";
 
 //TYPESCRIPT
-import { News } from "../../interface/news";
+import { News } from "../../interfaces/news";
 
 type NewsProps = Omit<News, "id">;
 

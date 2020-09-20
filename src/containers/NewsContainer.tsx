@@ -17,7 +17,7 @@ import {
 import { useNews } from "../utils/news";
 
 //TYPESCRIPT
-import { News } from "../interface/news";
+import { News } from "../interfaces/news";
 
 const TopSection: React.FC<{ bigNews: News; topNews: News[] }> = ({
   bigNews,

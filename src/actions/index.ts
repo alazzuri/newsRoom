@@ -7,7 +7,7 @@ import {
 } from "./types";
 
 //TYPESCRIPT
-import { News } from "../interface/news";
+import { News } from "../interfaces/news";
 
 export const toggleLoading = () => ({
   type: TOGGLE_LOADING,
