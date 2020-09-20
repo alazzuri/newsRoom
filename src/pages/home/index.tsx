@@ -11,7 +11,7 @@ import { Store } from "../../store";
 import { Action, ThunkAction } from "@reduxjs/toolkit";
 
 //UTILS
-import { getLatestNews } from "../../provider/canillitaApp";
+import { getLatestNews } from "../../api_provider/canillitaApp";
 
 const Home = () => {
   const news = useSelector((state: Store) => state.newsData);
