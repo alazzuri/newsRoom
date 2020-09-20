@@ -10,7 +10,7 @@ import {
 import moment from "moment";
 
 //TYPESCRIPT
-import { News } from "../interfaces/news";
+import { News } from "../interface/news";
 
 const initialstate = {
   newsData: [],

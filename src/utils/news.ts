@@ -1,5 +1,5 @@
 //TYPESCRIPT
-import { News, NewsResponse } from "../interfaces/news";
+import { News, NewsResponse } from "../interface/news";
 
 export const newsNormalizer = (NewsArray: Array<NewsResponse>) =>
   NewsArray.slice(0, 10).map(
